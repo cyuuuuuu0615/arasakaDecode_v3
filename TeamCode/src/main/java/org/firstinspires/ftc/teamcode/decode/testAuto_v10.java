@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Config
-@Autonomous(name = "Small AUTO BLUE")
+@Autonomous(name = "AUTO RED 遠射3球")
 public class testAuto_v10 extends LinearOpMode {
 
     public enum BallColor { PURPLE, GREEN, UNKNOWN, NONE }
@@ -46,10 +46,12 @@ public class testAuto_v10 extends LinearOpMode {
 
     public static int FRONT_SHOOT_TURRET_POS = 0;
     public static double FRONT_SHOOT_RPM = 560;
-    public static int BACK_SHOOT_TURRET_POS = -42;
+    public static int BACK_SHOOT_TURRET_POS = 50;
     public static double BACK_SHOOT_RPM = 1400;
 
     public static boolean isShootingMode = false;
+
+
     public static boolean isPreheating = false;
     public static boolean useBackShootingParams = false;
 
@@ -128,6 +130,8 @@ public class testAuto_v10 extends LinearOpMode {
 
         // 修正 StopIntake，確實將吸球馬達關閉
         Action cmdStopIntake = packet -> { robot.intakeMotor.setPower(0); return false; };
+        Action cmdReverseIntake = packet -> { robot.intakeMotor.setPower(-1); return false; };
+
 
         Action closeGate = packet -> {
             robot.gateServoL.setPosition(0.6667);
@@ -147,20 +151,21 @@ public class testAuto_v10 extends LinearOpMode {
                         new SequentialAction(
                                 drive.actionBuilder(beginPose)
                                         // === 第一波射擊 ===
-                                        .strafeTo(new Vector2d(50,-50))
                                         .afterTime(0, cmdPrepareBack)
-                                        .waitSeconds(1.5) // 等待到位
+                                        .waitSeconds(2) // 等待到位
                                         .stopAndAdd(new BackShooterAction(robot, telemetry))
                                         .stopAndAdd(cmdStopPreheat)
 //
 //                                        // === 移動並進行第一次吸球 ===
-                                        .strafeTo(new Vector2d(50, 0))
+                                        .strafeTo(new Vector2d(24.5, -14))
                                         .afterTime(0, new AutoIntakeAction(robot, telemetry))
                                         .afterTime(0, cmdPrepareBack)
-                                        .strafeTo(new Vector2d(50, 25), slowVel, slowAccel)
+                                        .strafeTo(new Vector2d(24.5, -50.5), slowVel, slowAccel)
+                                        .stopAndAdd(cmdStopIntake)
+                                        .stopAndAdd(cmdReverseIntake)
 
                                         // === 回到發射區進行第二波射擊 ===
-                                        .strafeTo(new Vector2d(50, -50))
+                                        .strafeTo(new Vector2d(0, 0))
                                         .stopAndAdd(closeGate)
 //                                        .waitSeconds(0.5)
                                         .stopAndAdd(new BackShooterAction(robot, telemetry))
@@ -168,10 +173,11 @@ public class testAuto_v10 extends LinearOpMode {
                                         .stopAndAdd(cmdStopPreheat)
 //
                                         // === 移動並進行第二次吸球 ===
-                                        .strafeTo(new Vector2d(65, 0))
                                         .afterTime(0, new AutoIntakeAction(robot, telemetry))
                                         .afterTime(0, cmdPrepareBack)
-                                        .strafeTo(new Vector2d(65, 25), slowVel, slowAccel)
+                                        .strafeTo(new Vector2d(0, -50.5))
+                                        .strafeTo(new Vector2d(0,-40))
+                                        .strafeTo(new Vector2d(0, -50.5))
                                         .stopAndAdd(cmdStopIntake)
 
                                         // === 回到發射區進行第三波射擊 ===
@@ -181,8 +187,36 @@ public class testAuto_v10 extends LinearOpMode {
                                         .stopAndAdd(closeGate)
                                         .stopAndAdd(cmdStopPreheat)
 
-                                        // === 停車 ===
-                                        .strafeTo(new Vector2d(60,0))
+                                        // === 移動並進行第二次吸球 ===
+                                        // === 移動並進行第二次吸球 ===
+                                        .afterTime(0, new AutoIntakeAction(robot, telemetry))
+                                        .afterTime(0, cmdPrepareBack)
+                                        .strafeTo(new Vector2d(0, -50.5))
+                                        .strafeTo(new Vector2d(0,-40))
+                                        .strafeTo(new Vector2d(0, -50.5))
+                                        .stopAndAdd(cmdStopIntake)
+                                        .stopAndAdd(cmdReverseIntake)
+                                        // === 回到發射區進行第三波射擊 ===
+                                        .strafeTo(new Vector2d(0, 0))
+                                        .stopAndAdd(closeGate)
+                                        .stopAndAdd(new BackShooterAction(robot, telemetry))
+                                        .stopAndAdd(closeGate)
+                                        .stopAndAdd(cmdStopPreheat)
+
+                                        .afterTime(0, new AutoIntakeAction(robot, telemetry))
+                                        .afterTime(0, cmdPrepareBack)
+                                        .strafeTo(new Vector2d(0, -50.5))
+                                        .strafeTo(new Vector2d(0,-40))
+                                        .strafeTo(new Vector2d(0, -50.5))
+                                        .stopAndAdd(cmdStopIntake)
+                                        .stopAndAdd(cmdReverseIntake)
+
+                                        // === 回到發射區進行第三波射擊 ===
+                                        .strafeTo(new Vector2d(0, 0))
+                                        .stopAndAdd(closeGate)
+                                        .stopAndAdd(new BackShooterAction(robot, telemetry))
+                                        .stopAndAdd(closeGate)
+                                        .stopAndAdd(cmdStopPreheat)
                                         .build()
                         )
                 )

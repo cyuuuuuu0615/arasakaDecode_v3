@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 
-@TeleOp(name = "A Motor_v2")
+@TeleOp(name = "Motor_v2")
 public class Motor_v2 extends LinearOpMode {
 
     private Limelight3A limelight;

@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class teleop_v3 extends LinearOpMode {
 
     private Limelight3A limelight;
-    private final double TARGET_TX = 8.0;
+    private final double TARGET_TX = 7.0;
     private final double MIN_POWER = 0.06;
     private double lastError = 0;
     private double KP = 0.011;
@@ -36,7 +36,7 @@ public class teleop_v3 extends LinearOpMode {
     private static final double RPM_SLOPE_CLOSE = 11.0;
     private static final double RPM_BASE_CLOSE = 580.0;
     private static final double RPM_SLOPE_FAR = 11.0;
-    private static final double RPM_BASE_FAR = 550.0;
+    private static final double RPM_BASE_FAR = 565.0;
     private static final double RPM_IDLE = 900.0;
 
     private double currentCommandedRpm = RPM_IDLE;

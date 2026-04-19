@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Config
-@Autonomous(name = "AUTO RED front with patten")
+@Autonomous(name = "AUTO RED 前射12球")
 public class testAuto_v4 extends LinearOpMode {
 
     public enum BallColor { PURPLE, GREEN, UNKNOWN, NONE }
@@ -46,7 +46,7 @@ public class testAuto_v4 extends LinearOpMode {
 
     public static int FRONT_SHOOT_TURRET_POS = 0;
     public static double FRONT_SHOOT_RPM = 560;
-    public static int BACK_SHOOT_TURRET_POS = 54;
+    public static int BACK_SHOOT_TURRET_POS = 80;
     public static double BACK_SHOOT_RPM = 1100;
 
     public static boolean isShootingMode = false;
@@ -160,8 +160,8 @@ public class testAuto_v4 extends LinearOpMode {
                                         .afterTime(0, new AutoIntakeAction(robot, telemetry))
                                         .afterTime(0, cmdPrepareBack)
                                         .strafeTo(new Vector2d(72, -40.5), slowVel, slowAccel)
-                                        .stopAndAdd(cmdStopIntake)
-                                        .stopAndAdd(cmdReverseIntake)
+//                                        .stopAndAdd(cmdStopIntake)
+//                                        .stopAndAdd(cmdReverseIntake)
 //                                        .strafeTo(new Vector2d(-66,-40),slowVel,slowAccel)
 //                                        .strafeTo(new Vector2d(-63,-43),slowVel,slowAccel)
 
@@ -191,10 +191,10 @@ public class testAuto_v4 extends LinearOpMode {
                                         .stopAndAdd(closeGate)
                                         .stopAndAdd(cmdStopPreheat)
 
-                                        .strafeTo(new Vector2d(24.5, -14))
+                                        .strafeTo(new Vector2d(24, -14))
                                         .afterTime(0, new AutoIntakeAction(robot, telemetry))
                                         .afterTime(0, cmdPrepareBack)
-                                        .strafeTo(new Vector2d(24.5, -50.5), slowVel, slowAccel)
+                                        .strafeTo(new Vector2d(24, -50.5), slowVel, slowAccel)
                                         .stopAndAdd(cmdStopIntake)
                                         .stopAndAdd(cmdReverseIntake)
 

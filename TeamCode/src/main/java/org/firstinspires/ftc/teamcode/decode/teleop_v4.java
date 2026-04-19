@@ -38,8 +38,8 @@ public class teleop_v4 extends LinearOpMode { // 類別名稱改為 teleop_v3_Re
     private static final double RPM_SLOPE_CLOSE = 11.0;
     private static final double RPM_BASE_CLOSE = 580.0;
     private static final double RPM_SLOPE_FAR = 11.0;
-    private static final double RPM_BASE_FAR = 530.0;
-    private static final double RPM_IDLE = 300.0;
+    private static final double RPM_BASE_FAR = 570.0;
+    private static final double RPM_IDLE = 900.0;
 
     private double currentCommandedRpm = RPM_IDLE;
     private static final double RPM_RAMP_DOWN_STEP = 5.0;
@@ -422,10 +422,10 @@ public class teleop_v4 extends LinearOpMode { // 類別名稱改為 teleop_v3_Re
         shooterMotorLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         shooterMotorLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
-        frontLeftMotor = hardwareMap.get(DcMotor.class, "motor3");
-        backLeftMotor = hardwareMap.get(DcMotor.class, "motor0");
-        frontRightMotor = hardwareMap.get(DcMotor.class, "motor2");
-        backRightMotor = hardwareMap.get(DcMotor.class, "motor1");
+        frontLeftMotor = hardwareMap.get(DcMotor.class, "motor1");
+        backLeftMotor = hardwareMap.get(DcMotor.class, "motor2");
+        frontRightMotor = hardwareMap.get(DcMotor.class, "motor0");
+        backRightMotor = hardwareMap.get(DcMotor.class, "motor3");
         baseMotor = hardwareMap.get(DcMotor.class, "motor6");
         baseMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         baseMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

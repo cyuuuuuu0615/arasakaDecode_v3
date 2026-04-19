@@ -46,7 +46,7 @@ public class testAuto_v8 extends LinearOpMode {
 
     public static int FRONT_SHOOT_TURRET_POS = 0;
     public static double FRONT_SHOOT_RPM = 560;
-    public static int BACK_SHOOT_TURRET_POS = -42;
+    public static int BACK_SHOOT_TURRET_POS = -40;
     public static double BACK_SHOOT_RPM = 1400;
 
     public static boolean isShootingMode = false;

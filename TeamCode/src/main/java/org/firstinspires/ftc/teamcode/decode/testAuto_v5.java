@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Config
-@Autonomous(name = "AUTO BLUE front with patten")
+@Autonomous(name = "AUTO BLUE 前射12球")
 public class testAuto_v5 extends LinearOpMode {
 
     public enum BallColor { PURPLE, GREEN, UNKNOWN, NONE }
@@ -160,13 +160,8 @@ public class testAuto_v5 extends LinearOpMode {
                                         .afterTime(0, new AutoIntakeAction(robot, telemetry))
                                         .afterTime(0, cmdPrepareBack)
                                         .strafeTo(new Vector2d(-72, -40.5), slowVel, slowAccel)
-                                        .stopAndAdd(cmdStopIntake)
-                                        .stopAndAdd(cmdReverseIntake)
 //                                        .stopAndAdd(cmdStopIntake)
-//                                        .strafeTo(new Vector2d(-66,-40),slowVel,slowAccel)
-//                                        .strafeTo(new Vector2d(-63,-43),slowVel,slowAccel)
-
-
+//
                                         // === 回到發射區進行第二波射擊 ===
                                         .strafeTo(new Vector2d(-72,-20))
                                         .strafeTo(new Vector2d(-72,0))
@@ -192,10 +187,10 @@ public class testAuto_v5 extends LinearOpMode {
                                         .stopAndAdd(closeGate)
                                         .stopAndAdd(cmdStopPreheat)
 
-                                        .strafeTo(new Vector2d(-24.5, -14))
+                                        .strafeTo(new Vector2d(-24, -14))
                                         .afterTime(0, new AutoIntakeAction(robot, telemetry))
                                         .afterTime(0, cmdPrepareBack)
-                                        .strafeTo(new Vector2d(-24.5, -50.5), slowVel, slowAccel)
+                                        .strafeTo(new Vector2d(-24, -50.5), slowVel, slowAccel)
                                         .stopAndAdd(cmdStopIntake)
                                         .stopAndAdd(cmdReverseIntake)
 
@@ -206,8 +201,8 @@ public class testAuto_v5 extends LinearOpMode {
                                         .stopAndAdd(new BackShooterAction(robot, telemetry))
                                         .stopAndAdd(closeGate)
                                         .stopAndAdd(cmdStopPreheat)
-                                        // === 停車 ===
-                                        .strafeTo(new Vector2d(-49,-45))
+
+                                        .strafeTo(new Vector2d(-49,-20))
                                         .build()
                         )
                 )
