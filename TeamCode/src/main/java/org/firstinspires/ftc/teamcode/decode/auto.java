@@ -36,7 +36,7 @@ public class auto extends LinearOpMode {
     double jiaoduservoUp = 0;
     double jiaoduservoDown = 0.37;
     double jiaoduservoPing = 0.3;
-
+    double test = 0;
 
     @Override
     public void runOpMode() throws InterruptedException {
